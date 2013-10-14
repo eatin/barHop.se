@@ -1,20 +1,13 @@
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    var map = L.map('map').setView([59.314838, 18.069763], 14);
 
-        L.tileLayer('http://{s}.tile.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/997/256/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+        L.mapbox.tileLayer('http://a.tiles.mapbox.com/v3/bjorsberg.map-nvs8mi3e.json', {
+            maxZoom: 18
         }).addTo(map);
 
-        L.marker([51.5, -0.09]).addTo(map)
-            .bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup()
+    navigator.geolocation.getCurrentPosition(function(data) {
+        var lat = data['coords']['latitude'];
+        var lng = data['coords']['longitude'];
+        
 
-        var popup = L.popup();
-
-        function onMapClick(e) {
-            popup
-                .setLatLng(e.latlng)
-                .setContent("You clicked the map at " + e.latlng.toString())
-                .openOn(map);
-        }
-
-        map.on('click', onMapClick);
+        map.setView(new L.LatLng(lat, lng), 16);
+    });
