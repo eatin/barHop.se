@@ -9,19 +9,18 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
         var lat = item.lat,
             lng = item.lng;
 
-        var marker = L.marker([lat, lng]).addTo(map);
+        var ourMarker = L.icon({
+            iconUrl: 'img/marker.png',
+            shadowUrl: 'img/blur.png',
+
+            iconSize:     [24, 40], // size of the icon
+            shadowSize:   [41, 32], // size of the shadow
+            iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
+            shadowAnchor: [15, 9],  // the same for the shadow
+            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+        });
+
+        var marker = L.marker([lat, lng], {icon: ourMarker}).addTo(map);
     }
 
-    // $.each( items, function() {
-    //     var lat = items.venue.location.lat,
-    //         lng = items.venue.location.lng;
-            
-    //     console.log(lat + lng);
-    //     // items.push( "<li id='" + key + "'>" + val + "</li>" );
-    // });
-
-    // $( "<ul/>", {
-    //     "class": "my-new-list",
-    //     html: items.join( "" )
-    // }).appendTo( "body" );
 });

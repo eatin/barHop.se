@@ -24,9 +24,3 @@ body {
 	width: 100%;
 	background: #222;
 }
-
-.leaflet-marker-icon.leaflet-zoom-animated.leaflet-clickable{
-	background: url(../img/marker.png) !important;
-	height: 40px !important;
-	width: 24px !important;
-}
