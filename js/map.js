@@ -8,6 +8,5 @@
         var lat = data['coords']['latitude'];
         var lng = data['coords']['longitude'];
         
-
         map.setView(new L.LatLng(lat, lng), 16);
     });
