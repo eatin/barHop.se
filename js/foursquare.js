@@ -15,12 +15,15 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
 
             iconSize:     [24, 40], // size of the icon
             shadowSize:   [41, 32], // size of the shadow
-            iconAnchor:   [12, 20], // point of the icon which will correspond to marker's location
-            shadowAnchor: [15, 9],  // the same for the shadow
-            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+            iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
+            shadowAnchor: [13, 30],  // the same for the shadow
+            popupAnchor:  [0, -45], // point from which the popup should open relative to the iconAnchor
+            autoPanPadding: [40, 40]
         });
+        L.marker([lat, lng], {icon: ourMarker})
+            .addTo(map)
+            .bindPopup('<strong>' + items[i].venue.name + '</strong><br/>' + items[i].venue.categories[0].name);
 
-        var marker = L.marker([lat, lng], {icon: ourMarker}).addTo(map);
     }
 
 });
