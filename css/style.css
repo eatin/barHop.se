@@ -24,3 +24,17 @@ body {
 	width: 100%;
 	background: #222;
 }
+
+.you{
+	width: 7px;
+	height: 7px;
+	border-radius: 7px;
+	background: #0fd2ab;
+	border: 1px solid #fff;
+	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,.67);
+	-moz-box-shadow: 0 2px 5px rgba(0,0,0,.67);
+	box-shadow: 0 2px 5px rgba(0,0,0,.67);
+	margin-left: -4px;
+	margin-top: -4px;
+	cursor: default !important;
+}
