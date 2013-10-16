@@ -6,6 +6,14 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
     for ( var i = 0; i < numItems; i++ ) {
         var item = items[i].venue.location;
 
+        var venName = items[i].venue.name,
+            re = new RegExp(' ', 'g');
+            venUrlName = venName.replace(re, '-'),
+            venUrlName = venUrlName.toLowerCase(),
+            venID = items[i].venue.id,
+            venCat = items[i].venue.categories[0].name,
+            linkUrl = 'https://foursquare.com/v/' + venUrlName + '/' + venID;
+
         var lat = item.lat,
             lng = item.lng;
 
@@ -22,7 +30,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
         });
         L.marker([lat, lng], {icon: ourMarker})
             .addTo(map)
-            .bindPopup('<strong>' + items[i].venue.name + '</strong><br/>' + items[i].venue.categories[0].name);
+            .bindPopup('<strong><a href="' + linkUrl + '" target="_blank">' + venName + '</a></strong><br/>' + venCat);
 
     }
 
