@@ -18,10 +18,10 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             lng = item.lng;
 
         var ourMarker = L.icon({
-            iconUrl: 'img/marker.png',
+            iconUrl: 'img/marker2.png',
             shadowUrl: 'img/blur.png',
 
-            iconSize:     [24, 40], // size of the icon
+            iconSize:     [25, 42], // size of the icon
             shadowSize:   [41, 32], // size of the shadow
             iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
             shadowAnchor: [13, 30],  // the same for the shadow
