@@ -12,7 +12,8 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             venUrlName = venUrlName.toLowerCase(),
             venID = items[i].venue.id,
             venCat = items[i].venue.categories[0].name,
-            linkUrl = 'https://foursquare.com/v/' + venUrlName + '/' + venID;
+            linkUrl = 'https://foursquare.com/v/' + venUrlName + '/' + venID,
+            venLocation = lat + ',' + lng;
 
         var lat = item.lat,
             lng = item.lng;    
@@ -40,11 +41,11 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             popupAnchor:  [0, -45], // point from which the popup should open relative to the iconAnchor
             autoPanPadding: [40, 40]
         });
-
+     
         var marker = L.marker([lat, lng], {icon: ourMarker})
             .addTo(map)
-            .bindPopup('<strong><a href="' + linkUrl + '" target="_blank">' + venName + '</a></strong><br/>' + venCat)
-            .on('click', changeMarker);
+            .bindPopup('<strong><a href="' + linkUrl + '" target="_blank">' + venName + '</a></strong><br/>' + venCat + '<div class="venueLocation">' + venLocation + '</div>')
+            .on('click', changeMarker);   
     }
 
         function changeMarker(ikon) {
@@ -55,7 +56,13 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             }
         }
 
-        
-        
+        //Show when selected location is added to Myroutes
+        $('#add-to-route').click(addToRoute);
+            var numItems = 0;
+            function addToRoutes() {
+            ++numItems;
+            console.log("added to route!");
+            $("#route-quantity").html(+numItems)
+            }    
 
 });
