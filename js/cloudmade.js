@@ -23,7 +23,6 @@
         route.bringToFront();
     }
 
-    addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute');
-    addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute');
+    
 
 

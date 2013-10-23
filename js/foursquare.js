@@ -15,7 +15,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             linkUrl = 'https://foursquare.com/v/' + venUrlName + '/' + venID;
 
         var lat = item.lat,
-            lng = item.lng;
+            lng = item.lng;    
 
         var ourMarker = L.icon({
             iconUrl: 'img/marker2.png',
@@ -28,10 +28,34 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             popupAnchor:  [0, -45], // point from which the popup should open relative to the iconAnchor
             autoPanPadding: [40, 40]
         });
-        L.marker([lat, lng], {icon: ourMarker})
-            .addTo(map)
-            .bindPopup('<strong><a href="' + linkUrl + '" target="_blank">' + venName + '</a></strong><br/>' + venCat);
 
+        var clickedMarker = L.icon({
+            iconUrl: 'img/marker.png',
+            shadowUrl: 'img/blur.png',
+
+            iconSize:     [24, 40], // size of the icon
+            shadowSize:   [41, 32], // size of the shadow
+            iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
+            shadowAnchor: [13, 30],  // the same for the shadow
+            popupAnchor:  [0, -45], // point from which the popup should open relative to the iconAnchor
+            autoPanPadding: [40, 40]
+        });
+
+        var marker = L.marker([lat, lng], {icon: ourMarker})
+            .addTo(map)
+            .bindPopup('<strong><a href="' + linkUrl + '" target="_blank">' + venName + '</a></strong><br/>' + venCat)
+            .on('click', changeMarker);
     }
+
+        function changeMarker(ikon) {
+            if (ikon.target._icon.src == "file://localhost/Users/nathalie/Documents/Code/barHop.se%20NEW/img/marker2.png") {
+                ikon.target.setIcon(clickedMarker);
+            } else {
+                ikon.target.setIcon(ourMarker);
+            }
+        }
+
+        
+        
 
 });
