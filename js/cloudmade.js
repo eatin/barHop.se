@@ -7,23 +7,21 @@
         document.getElementsByTagName('head') [0].appendChild(script);
     }
 
+    var pointA = new L.LatLng(28.635308, 77.22496),
+        pointB = new L.LatLng(28.984461, 77.70641);
+    var route = new L.Polyline([pointA, pointB], {
+        weight: 4,
+        opacity: 0.9,
+        smoothFactor: 1,
+        color: '#ffce39'
+    });
+
     function getRoute(response) {
-        var point, route, points = [];
-        for (var i=0; i<response.route_geometry.length; i++)
-        {
+        var point, points = [];
+        for (var i=0; i<response.route_geometry.length; i++) {
             point = new L.LatLng(response.route_geometry[i][0] , response.route_geometry[i][1]);
             points.push(point);
         }
-        route = new L.Polyline(points, {
-            weight: 4,
-            opacity: 0.9,
-            smoothFactor: 1,
-            color: '#ffce39'
-        }).addTo(map);
-        route.bringToFront();
+
+        route.setLatLngs(points).addTo(map).bringToFront();
     }
-
-    addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute');
-    addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute');
-
-
