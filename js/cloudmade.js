@@ -24,4 +24,7 @@
         }
 
         route.setLatLngs(points).addTo(map).bringToFront();
+
+        var bounds = route.getBounds();
+        map.fitBounds(bounds);
     }
