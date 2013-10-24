@@ -165,18 +165,18 @@
 
 
     var routes = 
-        [
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route3 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route4 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route5 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route6 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route7 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route8 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route9 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route10 + '/foot.js?callback=getRoute'
-        ]
+        {
+            route1: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute'),
+            route2: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute'),
+            route3: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route3 + '/foot.js?callback=getRoute'),
+            route4: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route4 + '/foot.js?callback=getRoute'),
+            route5: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route5 + '/foot.js?callback=getRoute'),
+            route6: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route6 + '/foot.js?callback=getRoute'),
+            route7: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route7 + '/foot.js?callback=getRoute'),
+            route8: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route8 + '/foot.js?callback=getRoute'),
+            route9: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route9 + '/foot.js?callback=getRoute'),
+            route10: addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route10 + '/foot.js?callback=getRoute'),
+        }
 
 
 
