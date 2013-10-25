@@ -25,7 +25,7 @@ body {
 	background: #222;
 }
 
-.you{
+.you, .bar2go2{
 	width: 7px;
 	height: 7px;
 	border-radius: 7px;
@@ -37,6 +37,9 @@ body {
 	margin-left: -4px;
 	margin-top: -4px;
 	cursor: default !important;
+}
+.bar2go2 {
+	background: #e9bc36;
 }
 
 .venueLocation {

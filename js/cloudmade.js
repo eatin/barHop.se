@@ -18,6 +18,7 @@
 
     function getRoute(response) {
         var point, points = [];
+
         for (var i=0; i<response.route_geometry.length; i++) {
             point = new L.LatLng(response.route_geometry[i][0] , response.route_geometry[i][1]);
             points.push(point);

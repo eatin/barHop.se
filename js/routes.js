@@ -14,7 +14,12 @@
     pass12 = new L.Marker(new L.latLng([ 59.314591, 18.031677 ]));
     pass12 = pass12.getLatLng().lat + ',' + pass12.getLatLng().lng;
 
-    var route1 = start1 + ',[' + pass11 + ',' + pass12 + '],' + stop1;
+    var route1 = start1 + ',[' + pass11 + ',' + pass12 + '],' + stop1,
+        routeMarker1 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute',
+                markers: start1 + ',' + pass11 + ',' + pass12 + ',' + stop1
+            }
 
 
     // RUTT 2 
@@ -32,7 +37,12 @@
     pass22 = new L.Marker(new L.latLng([ 59.31850550310536, 18.05919921204924 ]));
     pass22 = pass22.getLatLng().lat + ',' + pass22.getLatLng().lng;
 
-    var route2 = start2 + ',[' + pass21 + ',' + pass22 + '],' + stop2
+    var route2 = start2 + ',[' + pass21 + ',' + pass22 + '],' + stop2,
+        routeMarker2 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute',
+                markers: start2 + ',' + pass21 + ',' + pass22 + ',' + stop2
+            }
 
 
     // RUTT 3  
@@ -50,7 +60,12 @@
     pass32 = new L.Marker(new L.latLng([ 59.33583813078362, 18.07326943122913 ]));
     pass32 = pass32.getLatLng().lat + ',' + pass32.getLatLng().lng;
 
-    var route3 = start3 + ',[' + pass31 + ',' + pass32 + '],' + stop3
+    var route3 = start3 + ',[' + pass31 + ',' + pass32 + '],' + stop3,
+        routeMarker3 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route3 + '/foot.js?callback=getRoute',
+                markers: start3 + ',' + pass31 + ',' + pass32 + ',' + stop3
+            }
 
 
     //RUTT 4 
@@ -68,7 +83,12 @@
     pass42 = new L.Marker(new L.latLng([ 59.3357284262542, 18.07122230529785 ]));
     pass42 = pass42.getLatLng().lat + ',' + pass42.getLatLng().lng;
 
-    var route4 = start4 + ',[' + pass41 + ',' + pass42 + '],' + stop4
+    var route4 = start4 + ',[' + pass41 + ',' + pass42 + '],' + stop4,
+        routeMarker4 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route4 + '/foot.js?callback=getRoute',
+                markers: start4 + ',' + pass41 + ',' + pass42 + ',' + stop4
+            }
 
 
     //RUTT 5
@@ -86,7 +106,12 @@
     pass52 = new L.Marker(new L.latLng([ 59.34592628861429, 18.047490119934082 ]));
     pass52 = pass52.getLatLng().lat + ',' + pass52.getLatLng().lng;
 
-    var route5 = start5 + ',[' + pass51 + ',' + pass52 + '],' + stop5
+    var route5 = start5 + ',[' + pass51 + ',' + pass52 + '],' + stop5,
+        routeMarker5 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route5 + '/foot.js?callback=getRoute',
+                markers: start5 + ',' + pass51 + ',' + pass52 + ',' + stop5
+            }
 
 
     //RUTT 6
@@ -101,7 +126,12 @@
     pass61 = new L.Marker(new L.latLng([ 59.34583991874391, 18.058699929368707 ]));
     pass61 = pass61.getLatLng().lat + ',' + pass61.getLatLng().lng;
 
-    var route6 = start6 + ',[' + pass61 + '],' + stop6
+    var route6 = start6 + ',[' + pass61 + '],' + stop6,
+        routeMarker6 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route6 + '/foot.js?callback=getRoute',
+                markers: start6 + ',' + pass61 + ',' + stop6
+            }
 
 
     //RUTT 7
@@ -116,7 +146,12 @@
     pass71 = new L.Marker(new L.latLng([ 59.31257193326859, 18.081670869542997 ]));
     pass71 = pass71.getLatLng().lat + ',' + pass71.getLatLng().lng;
 
-    var route7 = start7 + ',[' + pass71 + '],' + stop7
+    var route7 = start7 + ',[' + pass71 + '],' + stop7,
+        routeMarker7 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route7 + '/foot.js?callback=getRoute',
+                markers: start7 + ',' + pass71 + ',' + stop7
+            }
 
 
     //RUTT 8
@@ -131,7 +166,12 @@
     pass81 = new L.Marker(new L.latLng([ 59.332467, 18.074047 ]));
     pass81 = pass81.getLatLng().lat + ',' + pass81.getLatLng().lng;
 
-    var route8 = start8 + ',[' + pass81 + '],' + stop8
+    var route8 = start8 + ',[' + pass81 + '],' + stop8,
+        routeMarker8 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route8 + '/foot.js?callback=getRoute',
+                markers: start8 + ',' + pass81 + ',' + stop8
+            }
 
 
     //RUTT 9
@@ -146,7 +186,12 @@
     pass91 = new L.Marker(new L.latLng([ 59.339572887632585, 18.03388217871556 ]));
     pass91 = pass91.getLatLng().lat + ',' + pass91.getLatLng().lng;
 
-    var route9 = start9 + ',[' + pass91 + '],' + stop9
+    var route9 = start9 + ',[' + pass91 + '],' + stop9,
+        routeMarker9 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route9 + '/foot.js?callback=getRoute',
+                markers: start9 + ',' + pass91 + ',' + stop9
+            }
 
 
     //RUTT 10
@@ -161,35 +206,24 @@
     pass101 = new L.Marker(new L.latLng([ 59.34295158818096, 18.04903822268627 ]));
     pass101 = pass101.getLatLng().lat + ',' + pass101.getLatLng().lng;
 
-    var route10 = start10 + ',[' + pass101 + '],' + stop10
+    var route10 = start10 + ',[' + pass101 + '],' + stop10,
+        routeMarker10 =
+            {
+                route: 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route10 + '/foot.js?callback=getRoute',
+                markers: start10 + ',' + pass101 + ',' + stop10
+            }
 
 
     var routes = 
         [
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route1 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route2 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route3 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route4 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route5 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route6 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route7 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route8 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route9 + '/foot.js?callback=getRoute',
-            'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + route10 + '/foot.js?callback=getRoute'
-        ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            routeMarker1,
+            routeMarker2,
+            routeMarker3,
+            routeMarker4,
+            routeMarker5,
+            routeMarker6,
+            routeMarker7,
+            routeMarker8,
+            routeMarker9,
+            
+        ]   
