@@ -6,18 +6,12 @@
         maxZoom: 19
     }).addTo(map);
 
-    navigator.geolocation.getCurrentPosition(function(data) {
+    navigator.geolocation.watchPosition(function(data) {
         var lat = data['coords']['latitude'];
         var lng = data['coords']['longitude'];
         var newLatLng = new L.LatLng(lat, lng);
 
         map.setView(new L.LatLng(lat, lng), 16);
-    });
-
-    navigator.geolocation.watchPosition(function(data) {
-        var lat = data['coords']['latitude'];
-        var lng = data['coords']['longitude'];
-        var newLatLng = new L.LatLng(lat, lng);
         
         user.setLatLng(newLatLng).addTo(map);
     });
