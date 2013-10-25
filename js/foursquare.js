@@ -60,13 +60,4 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
 
         map.addLayer(markers);
 
-        //Show when selected location is added to Myroutes
-        $('#add-to-route').click(addToRoute);
-            var numItems = 0;
-            function addToRoutes() {
-            ++numItems;
-            console.log("added to route!");
-            $("#route-quantity").html(+numItems)
-            }    
-
 });

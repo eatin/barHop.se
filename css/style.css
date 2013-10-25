@@ -45,3 +45,11 @@ body {
 .venueLocation {
 	display: none;
 }
+
+#form {
+	margin: 100px;
+	position: relative;
+	z-index: 444;
+	vertical-align: right;
+	background: ffffff;
+}
