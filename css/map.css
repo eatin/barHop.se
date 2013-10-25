@@ -5,16 +5,16 @@
     transition: transform 0.6s ease-out, opacity 0.6s ease-in;
 }
 .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
-    background: rgba(212, 43, 11, 0.5);
+    background: rgba(109, 207, 174, 0.5);
 }
 .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
-    background: rgba(212, 43, 11, 0.5);
+    background: rgba(109, 207, 174, 0.5);
 }
 .marker-cluster-small:hover div, .marker-cluster-medium:hover div, .marker-cluster-large:hover div {
-    background: rgba(200, 43, 11, 1);
+    background: rgba(75, 270, 185, 1);
 }
 .marker-cluster-small:active div, .marker-cluster-medium:active div, .marker-cluster-large:active div {
-    background: rgba(200, 43, 11, 1);
+    background: rgba(75, 270, 185, 1);
 }
 .marker-cluster {
     background-clip: padding-box;
@@ -27,7 +27,7 @@
     margin-top: 5px;
     text-align: center;
     border-radius: 15px;
-
+    color: #1d4246;
 }
 .marker-cluster span {
     line-height: 30px;
