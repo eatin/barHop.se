@@ -3,7 +3,7 @@
     var user = L.marker([0, 0], {icon: userLocation});
 
     L.mapbox.tileLayer('http://a.tiles.mapbox.com/v3/bjorsberg.map-nvs8mi3e.json', {
-        maxZoom: 19
+        maxZoom: 18
     }).addTo(map);
 
     navigator.geolocation.watchPosition(function(data) {

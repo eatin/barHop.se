@@ -1,0 +1,36 @@
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+    -webkit-transition: -webkit-transform 0.6s ease-out, opacity 0.6s ease-in;
+    -moz-transition: -moz-transform 0.6s ease-out, opacity 0.6s ease-in;
+    -o-transition: -o-transform 0.6s ease-out, opacity 0.6s ease-in;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-in;
+}
+.marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+    background: rgba(212, 43, 11, 0.5);
+}
+.marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+    background: rgba(212, 43, 11, 0.5);
+}
+.marker-cluster-small:hover div, .marker-cluster-medium:hover div, .marker-cluster-large:hover div {
+    background: rgba(200, 43, 11, 1);
+}
+.marker-cluster-small:active div, .marker-cluster-medium:active div, .marker-cluster-large:active div {
+    background: rgba(200, 43, 11, 1);
+}
+.marker-cluster {
+    background-clip: padding-box;
+    border-radius: 20px;
+}
+.marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 15px;
+
+}
+.marker-cluster span {
+    line-height: 30px;
+    font-weight: bold;
+
+}
