@@ -83,7 +83,7 @@ ul {
 	display: none;
 }
 
-ul li{
+ul li {
 	font-size: 24px;
 	font-weight: 300;
 	list-style: none;
@@ -91,6 +91,7 @@ ul li{
 	height: 40px;
 	line-height: 40px;
 	padding-left: 10px;
+	cursor: pointer;
 }
 
 #hamburger {
@@ -102,6 +103,11 @@ ul li{
 	z-index: 999;
 	padding: 12px;
 	cursor: pointer;
+}
+
+ul li.chosenOne {
+	padding-left: 20px;
+	color: rgba(255,255,255,.6)
 }
 
 #hamburger .ingredient {

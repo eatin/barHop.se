@@ -4,17 +4,19 @@ $(function(){
 	$('.leaflet-bottom.leaflet-right').hide();
 
 	// RANDOM ROUTES
-	$('#randomize').click(function(){
+	$('.routeMePlz').click(function(){
 		var go2barLocation = L.divIcon({className: 'bar2go2',iconSize: [7, 7]});
-		var nr = Math.floor((Math.random()*10)+1),
-			str = routes[nr].markers,
-			temp = [],
-			temp = str.split(',');
+		var random = Math.floor((Math.random()*10)+1),
+			nr = $(this).attr('id');
 
-			// while(temp.length) {
-			//     // temp = temp.splice(1,2);
-			//     console.log(temp.splice(0,2));
-			// }
+		if ($(this).hasClass('randomBro')){
+			var str = routes[random].markers;
+		} else {
+			var str = routes[nr].markers;
+		}
+
+		var temp = [],
+			temp = str.split(',');
 
 		$('.bar2go2').hide();
 		var i,j,temparray,chunk = 2;
@@ -26,7 +28,14 @@ $(function(){
 			var go2 = L.marker([goHereLat, goHereLng], {icon: go2barLocation}).addTo(map);	
 		}
 
-    	addScript(routes[nr].route);
+		if ($(this).hasClass('randomBro')){
+    		addScript(routes[random].route);
+		} else {
+			addScript(routes[nr].route);
+			$('.chosenOne').removeClass('chosenOne');
+			$(this).addClass('chosenOne');
+		}
+
     	$('#map').animate({
 			marginLeft: '0px'
 		}, 400, 'easeInExpo');
