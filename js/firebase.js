@@ -6,7 +6,7 @@ var routeNameRef = myRoutesRef.child('myRoutes/routeName');
 var createdRouteRef = routeNameRef.child('routeName/route');
 
 // Generate a reference to a new location with push
-var new routeNameRef = myRoutesRef.push();
+// var routeNameRef = myRoutesRef.push();
 
 //Local storage
 var routeName = localStorage.getItem('routeName');
@@ -46,16 +46,13 @@ $('#createRoute').click(function(){
 //});
 
 //Callback
-dataRef.set(function(error)) {
+dataRef.set(function(error) {
   if (error) {
     alert('Route could not be saved.' + error);
   } else {
     alert('Route saved successfully.');
   }
 });
-
-	
-	
 
 
 

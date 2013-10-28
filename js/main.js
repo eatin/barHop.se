@@ -97,6 +97,32 @@ $(function(){
 		}
 	});
 
+		// Push route to firebase
+	$('#pushRoute').click(function(e){
+		e.preventDefault();
+		
+		var routesRef = new Firebase ('https://barhop.firebaseio.com/myRoutes'),
+			routeName = $('input#routeName').val(),
+			routeAuthor = $('input#routeAuthor').val();
+
+		var startP = allP[0] + ',' + allP[1],
+            endP = allP[allP.length - 2] + ',' + allP[allP.length - 1],
+            transitP = allP.splice(2, allP.length - 4),
+            routePath = 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute';
+
+		addScript(routePath);
+		routesRef.push({"Route name": routeName, "Author": routeAuthor, "Route path": routePath});
+
+		$('.savedRoutes').append('<li data-routeUrl="' + routePath + '">' + routeName + '</li>');
+
+		$('.modalLayer').fadeOut(500, 'easeOutExpo');
+		$('#saveModal').animate({marginTop: '150px'},600, 'easeOutExpo', function(){
+			$('#saveModal').animate({marginTop: '-180px'});
+		});
+		$('#saveBtn').text('Save route');
+		modalShown = false;
+	});
+
 
 });
 

@@ -1,5 +1,6 @@
 var enableRouteMakeing = false;
-
+var allP = [];
+    
 $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_id=TBBQCOJODYFMHOV1HSRJSFH4AZI2MV2H1IGDWJTB30J1LYGZ&client_secret=SNOY0AJ312VC2TH5HHSRUEYYRSJXMCFEKU521FIP4K5UC5Y5&v=20120530", function( data ) {
 
     var items = data.response.list.listItems.items,
@@ -52,8 +53,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
         markers.addLayer(marker);
     }
         
-        // CREATE ROUTES
-        var allP = [];
+    // CREATE ROUTES
 
         function changeMarker(ikon) {
             if(enableRouteMakeing) {
@@ -68,15 +68,5 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             }
         }
         map.addLayer(markers);
-
-        $('#createRouter').click(function(){
-            var startP = allP[0] + ',' + allP[1],
-                endP = allP[allP.length - 2] + ',' + allP[allP.length - 1],
-                transitP = allP.splice(2, allP.length - 4);
-
-            addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute');
-        })
-
-        
 
 });

@@ -32,7 +32,7 @@
         </div>
         <div class="routes">
             <h1>Your routes</h1>
-            <ul>
+            <ul class="savedRoutes">
                 <li class="routeMePlz" id="0">Den lilla goa</li>
                 <li class="routeMePlz" id="1">STURE-P</li>
                 <li class="routeMePlz" id="2">Under ytan</li>
@@ -58,10 +58,10 @@
         <div id="saveModal">
             <form>
                 <div class="inputHolder">
-                    <input type="text" placeholder="*Route name" required>
-                    <input type="text" placeholder="Creator">
+                    <input type="text" id="routeName" placeholder="*Route name" required>
+                    <input type="text" id="routeAuthor" placeholder="Author">
                 </div>
-                <input type="submit" value="Save route">
+                <input type="submit" id="pushRoute" value="Save route">
             </form>
         </div>
     </div>
@@ -76,7 +76,7 @@
     <script src="js/leaflet.markercluster-src.js"></script>
     <script src="js/map.js"></script>
     <script src="js/foursquare.js"></script>
-    <script src="js/firebase.js"></script>
+    <!-- <script src="js/firebase.js"></script> -->
     <script src="js/cloudmade.js"></script>
     <script src="js/routes.js"></script>
     <script src="js/main.js"></script>
