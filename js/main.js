@@ -64,7 +64,6 @@ $(function(){
 	$('.routes h1').click(function(){
 		$('.routes ul').slideUp( 500, 'easeOutExpo');
 		$(this).parent().children('ul').slideToggle( 500, 'easeOutExpo');
-		console.log($(this).parent().children('ul'))
 	});
 
 
@@ -72,7 +71,30 @@ $(function(){
 
 		// Initialize create-your-own-route-mode
 	$('#createRoute').click(function(){
-			
+		enableRouteMakeing = true;
+
+		$('#map').animate({marginLeft: '0px'}, 400, 'easeInExpo');
+		$('#saveBtn').show();
+		menuShowing = false;
+	});
+
+		// Show modal on #saveBtn 
+	var modalShown = false;
+	$('#saveBtn').click(function(){
+		if (!modalShown) {
+			modalShown = true;
+			$('.modalLayer').fadeIn(300, 'easeInExpo',function(){
+				$('#saveModal').animate({marginTop: '50px'},400, 'easeInOutExpo');
+			});
+			$(this).text('Cancel');
+		} else {
+			modalShown = false;
+			$('.modalLayer').fadeOut(500, 'easeOutExpo');
+			$('#saveModal').animate({marginTop: '150px'},600, 'easeOutExpo', function(){
+				$(this).animate({marginTop: '-180px'});
+			});
+			$(this).text('Save route');
+		}
 	});
 
 

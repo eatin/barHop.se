@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-family: 'source sans pro', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	overflow: hidden;
 }
 
@@ -94,20 +94,20 @@ ul li {
 	cursor: pointer;
 }
 
+ul li.chosenOne {
+	padding-left: 20px;
+	color: rgba(255,255,255,.6)
+}
+
 #hamburger {
 	width: 22px;
 	background: #e4e4e4;
 	position: absolute;
 	bottom: 10px;
 	left: 10px;
-	z-index: 999;
+	z-index: 800;
 	padding: 12px;
 	cursor: pointer;
-}
-
-ul li.chosenOne {
-	padding-left: 20px;
-	color: rgba(255,255,255,.6)
 }
 
 #hamburger .ingredient {
@@ -118,6 +118,75 @@ ul li.chosenOne {
 }
 #hamburger .ingredient:first-child {
 	margin-top: 0;
+}
+
+a#saveBtn {
+	width: auto;
+	background: #e4e4e4;
+	position: absolute;
+	bottom: 10px;
+	left: 67px;
+	z-index: 1060;
+	padding: 10px 14px;
+	cursor: pointer;
+	color: #1e1e1e;
+	font-weight: 600;
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	/*display: none;*/
+}
+
+.modalLayer {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(74,102,123, .9);
+	z-index: 1050;
+	display: none;
+}
+
+#saveModal {
+	width: 320px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: -180px;
+}
+
+form input[type="text"], form input[type="submit"] {
+	width: 100%;
+	padding: 0 15px;
+	border: 0;
+	height: 50px;
+	font-size: 20px;
+	font-weight: 300;
+	font-family: 'Source Sans Pro', sans-serif;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+form input[type="text"]:first-child{
+	border-bottom: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+	margin-top: 20px;
+	color: #194146;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	background: #33fbbc;
+	font-weight: 400;
+	cursor: pointer;
+	transition-property: letter-spacing;
+	transition-duration: 0.3s;
+}
+
+form input[type="submit"]:hover {
+	background: #4bffc6;
+	letter-spacing: 6px;	
 }
 
 
