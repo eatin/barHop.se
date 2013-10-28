@@ -15,7 +15,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             venID = items[i].venue.id,
             venCat = items[i].venue.categories[0].name,
             linkUrl = 'https://foursquare.com/v/' + venUrlName + '/' + venID,
-            venLocation = lat + ',' + lng;
+            venLocation = '<div class="lat">' + lat + '</div><div class="lng">' + lng + '</div>';
 
         var lat = item.lat,
             lng = item.lng;    
@@ -49,15 +49,33 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             .on('click', changeMarker);
         markers.addLayer(marker);
     }
+        
+        var allP = [];
+
 
         function changeMarker(ikon) {
             if (ikon.target._icon.src == "file://localhost/Users/nathalie/Documents/Code/barHop.se%20NEW/img/marker2.png") {
                 ikon.target.setIcon(clickedMarker);
+                allP.push(ikon.latlng.lat);
+                allP.push(ikon.latlng.lng);
+
             } else {
                 ikon.target.setIcon(ourMarker);
             }
+                console.log('alla punkter: ' + allP);
         }
-
         map.addLayer(markers);
+
+        $('#createRoute').click(function(){
+            var startP = allP[0] + ',' + allP[1],
+                endP = allP[allP.length - 2] + ',' + allP[allP.length - 1],
+                transitP = allP.splice(2, allP.length - 4);
+
+                console.log('Start punkt: ' + startP);
+                console.log('Slut punkt: ' + endP);
+                console.log('Transit punkter: ' + transitP);
+        })
+
+        
 
 });
