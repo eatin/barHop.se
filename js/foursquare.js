@@ -55,7 +55,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
 
         function changeMarker(ikon) {
             console.log(ikon);
-            if (ikon.target._icon.src == "file:///Users/bjorsberg/Sites/barhop.se/img/marker2.png") {
+            if (ikon.target._icon.src == "file:///Users/nathalie/Documents/Code/barHop.se%20NEW/img/marker2.png") {
                 ikon.target.setIcon(clickedMarker);
                 allP.push(ikon.latlng.lat);
                 allP.push(ikon.latlng.lng);
