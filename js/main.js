@@ -67,6 +67,15 @@ $(function(){
 		console.log($(this).parent().children('ul'))
 	});
 
+
+	// CREATE YOUR OWN ROUTE
+
+		// Initialize create-your-own-route-mode
+	$('#createRoute').click(function(){
+			
+	});
+
+
 });
 
 

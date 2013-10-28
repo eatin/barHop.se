@@ -54,7 +54,8 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
 
 
         function changeMarker(ikon) {
-            if (ikon.target._icon.src == "file://localhost/Users/nathalie/Documents/Code/barHop.se%20NEW/img/marker2.png") {
+            console.log(ikon);
+            if (ikon.target._icon.src == "file:///Users/bjorsberg/Sites/barhop.se/img/marker2.png") {
                 ikon.target.setIcon(clickedMarker);
                 allP.push(ikon.latlng.lat);
                 allP.push(ikon.latlng.lng);
@@ -62,7 +63,6 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
             } else {
                 ikon.target.setIcon(ourMarker);
             }
-                console.log('alla punkter: ' + allP);
         }
         map.addLayer(markers);
 
@@ -71,9 +71,7 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
                 endP = allP[allP.length - 2] + ',' + allP[allP.length - 1],
                 transitP = allP.splice(2, allP.length - 4);
 
-                console.log('Start punkt: ' + startP);
-                console.log('Slut punkt: ' + endP);
-                console.log('Transit punkter: ' + transitP);
+            addScript('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute');
         })
 
         
