@@ -46,7 +46,7 @@ $(function(){
 	var menuShowing = false;
 	$('#hamburger').click(function(){
 		var winW = $(window).width(),
-			slideL = winW - 66;
+			slideL = winW - 1018;
 		if (!menuShowing) {
 			menuShowing = true;
 			$('#map').animate({
@@ -161,11 +161,11 @@ $(function(){
 			id = stored[1];
 			console.log(id)
 
-		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen">' + key + '</li>');
+		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen"><a href="#" class="use">' + key + '</a><a href="' + id + '"><img src="img/sharethis.png"></a></li>');
 	}
 
 		// Allow user created routes
-	$('li.userGen').click(function(){
+	$('li.userGen a.use').click(function(){
 		var keyToHeart = $(this).text(),
 			userRoutePath = localStorage.getItem(keyToHeart),
 			userRoutePath = userRoutePath.split('SPLITTER'),
@@ -244,11 +244,23 @@ $(function(){
 			localStorage.setItem( routeName, routePath + 'SPLITTER' + ID );
 
 			// Instant store
-			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '</li>');
+			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '<a href="' + ID + '"><img src="img/sharethis.png"></a></li>');
 
 		});
 
 	}
+
+		// Share link
+	$('.savedRoutes li a').click(function(e){
+		e.preventDefault();
+		var el = $(this).parent('li'),
+			link = el.attr('id'),
+			url = window.location + '#';
+
+		el.append('<span><input type="text" class="shareLink" value="' + url + link + '" /></span>');
+		el.find('input.shareLink').focus();
+
+	})
 
 
 });
