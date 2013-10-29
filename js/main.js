@@ -98,7 +98,8 @@ $(function(){
 	});
 
 		// Push route to firebase
-	var routesRef = new Firebase ('https://barhop.firebaseio.com/myRoutes');
+	var routesRef = new Firebase ('https://barhop.firebaseio.com/myRoutes'),
+		uniqID;
 
 	$('#pushRoute').click(function(e){
 		e.preventDefault();
@@ -129,16 +130,20 @@ $(function(){
             routePath = 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute';
 
         // Push to fire base and print out the route + saves the uniq ID
-		var uniqID = routesRef.push({"Route name": routeName, "Author": routeAuthor, "Route path": routePath, "bars": [ startP + ',' + transitP + ',' + endP ]}),
-			uniqID = uniqID.name();
+		var pushed = routesRef.push({"Route name": routeName, "Author": routeAuthor, "Route path": routePath, "bars": [ startP + ',' + transitP + ',' + endP ], "ID": " "}),
+			uniqID = pushed.name();
 		
+		var pushedRef = new Firebase ('https://barhop.firebaseio.com/myRoutes/' + uniqID );
+			pushedRef.child('ID').set( uniqID );
+		
+		// Print route
 		addScript(routePath);
 
 		// local storage
-		localStorage.setItem( routeName, routePath );
+		localStorage.setItem( routeName, routePath + 'SPLITTER' + uniqID );
 
 		// append to menu
-		$('.savedRoutes').append('<li id="' + uniqID + '">' + routeName + '</li>');
+		$('.savedRoutes').append('<li id="' + uniqID + '" class="userGen">' + routeName + '</li>');
 
 		// Do shit to get rich (or die trying bitch!!)
 		$('.modalLayer').fadeOut(500, 'easeOutExpo');
@@ -151,13 +156,20 @@ $(function(){
 
 		// Get stored routes
 	for (var key in localStorage){
-		$('ul.savedRoutes').append('<li class="userGen">' + key + '</li>');
+		var stored = localStorage.getItem(key),
+			stored = stored.split('SPLITTER'),
+			id = stored[1];
+			console.log(id)
+
+		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen">' + key + '</li>');
 	}
 
 		// Allow user created routes
 	$('li.userGen').click(function(){
 		var keyToHeart = $(this).text(),
 			userRoutePath = localStorage.getItem(keyToHeart),
+			userRoutePath = userRoutePath.split('SPLITTER'),
+			userRoutePath = userRoutePath[0],
 			bars;
 
 		routesRef.once('value', function(snapshot){
@@ -200,7 +212,6 @@ $(function(){
 		hashID = locUrl[1];
 	
 	if ( hashID ) {
-
 		var uniqRef = new Firebase ('https://barhop.firebaseio.com/myRoutes/' + hashID),
 			refID, uniqBars;
 
@@ -208,7 +219,8 @@ $(function(){
 			var refID = snapshot.val(),
 				uniqBars = refID.bars[0],
 				routeName = refID[ 'Route name' ],
-				routePath = refID[ 'Route path' ];
+				routePath = refID[ 'Route path' ],
+				ID = refID.ID;
 
 			// Adding waypoints
 			var uniqGo2Bars = uniqBars.split(',');
@@ -229,7 +241,10 @@ $(function(){
 			addScript(refID[ 'Route path' ]);
 
 			// Setting up localStorage
-			localStorage.setItem( routeName, routePath );
+			localStorage.setItem( routeName, routePath + 'SPLITTER' + ID );
+
+			// Instant store
+			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '</li>');
 
 		});
 

@@ -61,8 +61,6 @@ $.getJSON( "https://api.foursquare.com/v2/lists/5257bc54498e08c238c10737?client_
                     ikon.target.setIcon(clickedMarker);
                     allP.push(ikon.latlng.lat);
                     allP.push(ikon.latlng.lng);
-                    console.log(allP)
-
                 } else {
                     ikon.target.setIcon(ourMarker);
                 }
