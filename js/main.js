@@ -159,9 +159,8 @@ $(function(){
 		var stored = localStorage.getItem(key),
 			stored = stored.split('SPLITTER'),
 			id = stored[1];
-			console.log(id)
 
-		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen"><a href="#" class="use">' + key + '</a><a href="' + id + '"><img src="img/sharethis.png"></a></li>');
+		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen"><a href="#" class="use">' + key + '</a><a href="' + id + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /></span></li>');
 	}
 
 		// Allow user created routes
@@ -244,7 +243,7 @@ $(function(){
 			localStorage.setItem( routeName, routePath + 'SPLITTER' + ID );
 
 			// Instant store
-			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '<a href="' + ID + '"><img src="img/sharethis.png"></a></li>');
+			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '<a href="' + ID + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /></span></li>');
 
 		});
 
@@ -253,13 +252,13 @@ $(function(){
 		// Share link
 	$('.savedRoutes li a').click(function(e){
 		e.preventDefault();
+		
 		var el = $(this).parent('li'),
 			link = el.attr('id'),
 			url = window.location + '#';
 
-		el.append('<span><input type="text" class="shareLink" value="' + url + link + '" /></span>');
-		el.find('input.shareLink').focus();
-
+		el.find('input.shareLink').val( url + link );
+		el.find('span').show().find('input.shareLink').focus().select();
 	})
 
 
