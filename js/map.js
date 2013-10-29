@@ -2,7 +2,7 @@
     var userLocation = L.divIcon({className: 'you',iconSize: [7, 7]});
     var user = L.marker([0, 0], {icon: userLocation});
 
-    L.mapbox.tileLayer('http://a.tiles.mapbox.com/v3/bjorsberg.map-nvs8mi3e.json', {
+    L.mapbox.tileLayer('http://a.tiles.mapbox.com/v3/jockekroon.map-ct91hlek.json', {
         maxZoom: 19
     }).addTo(map);
 

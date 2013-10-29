@@ -128,16 +128,17 @@ $(function(){
             transitP = allP.splice(2, allP.length - 4),
             routePath = 'http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute';
 
-        // Push to fire base and print out the route
-		routesRef.push({"Route name": routeName, "Author": routeAuthor, "Route path": routePath, "bars": [ startP + transitP + endP ]});
+        // Push to fire base and print out the route + saves the uniq ID
+		var uniqID = routesRef.push({"Route name": routeName, "Author": routeAuthor, "Route path": routePath, "bars": [ startP + ',' + transitP + ',' + endP ]}),
+			uniqID = uniqID.name();
+		
 		addScript(routePath);
 
 		// local storage
-		// localStorage.setItem( 'route' + locI, routeName );
 		localStorage.setItem( routeName, routePath );
 
 		// append to menu
-		$('.savedRoutes').append('<li>' + routeName + '</li>');
+		$('.savedRoutes').append('<li id="' + uniqID + '">' + routeName + '</li>');
 
 		// Do shit to get rich (or die trying bitch!!)
 		$('.modalLayer').fadeOut(500, 'easeOutExpo');
@@ -150,36 +151,89 @@ $(function(){
 
 		// Get stored routes
 	for (var key in localStorage){
-		console.log(key)
 		$('ul.savedRoutes').append('<li class="userGen">' + key + '</li>');
 	}
 
 		// Allow user created routes
 	$('li.userGen').click(function(){
 		var keyToHeart = $(this).text(),
-			userRoutePath = localStorage.getItem(keyToHeart);
+			userRoutePath = localStorage.getItem(keyToHeart),
+			bars;
 
+		routesRef.once('value', function(snapshot){
+			var menuRoutes = snapshot.val();
+			$.grep(Object.keys(menuRoutes), function (k) {
+			    var x = menuRoutes[k];
+			    
+			    if (x[ 'Route name' ] == keyToHeart ) {
+			        bars = x.bars[0];
+			    }
+			});
+		});
 		addScript(userRoutePath);
 
-		// Adding waypoints
-		var temp = [],
-			temp = allP;
-		$('.bar2go2').hide();
-		// Looping thorugh all coordinates
-		var i,j,goHere,chunk = 2;
-		for (i=0,j=temp.length; i<j; i+=chunk) {
-			goHere = temp.slice(i,i+chunk);
-			var goHereLat = goHere[0],
-				goHereLng = goHere[1];
+		setTimeout(function(){
+			// Adding waypoints
+			var usrBars = bars.split(',');
+			$('.bar2go2').hide();
+			// Looping thorugh all coordinates
+			var i,j,goHere,chunk = 2;
+			for (i=0,j=usrBars.length; i<j; i+=chunk) {
 
-			var go2 = L.marker([goHereLat, goHereLng], {icon: go2barLocation}).addTo(map);
-		}
+				goHere = usrBars.slice(i,i+chunk);
+				var goHereLat = goHere[0],
+					goHereLng = goHere[1];
+
+				var go2 = L.marker([goHereLat, goHereLng], {icon: go2barLocation}).addTo(map);
+			}
+		}, 500)
 
 		$('#map').animate({
 			marginLeft: '0px'
 		}, 400, 'easeInExpo');
 		menuShowing = false;
 	});
+
+		// IF HAS-HASH PRINT THE ROUTE
+	var locUrl = window.location.href,
+		locUrl = locUrl.split('#'),
+		hashID = locUrl[1];
+	
+	if ( hashID ) {
+
+		var uniqRef = new Firebase ('https://barhop.firebaseio.com/myRoutes/' + hashID),
+			refID, uniqBars;
+
+		uniqRef.once('value', function(snapshot){
+			var refID = snapshot.val(),
+				uniqBars = refID.bars[0],
+				routeName = refID[ 'Route name' ],
+				routePath = refID[ 'Route path' ];
+
+			// Adding waypoints
+			var uniqGo2Bars = uniqBars.split(',');
+			$('.bar2go2').hide();
+
+			// Looping thorugh all coordinates
+			var i,j,goHere,chunk = 2;
+			for (i=0,j=uniqGo2Bars.length; i<j; i+=chunk) {
+
+				goHere = uniqGo2Bars.slice(i,i+chunk);
+				var goHereLat = goHere[0],
+					goHereLng = goHere[1];
+
+				var go2 = L.marker([goHereLat, goHereLng], {icon: go2barLocation}).addTo(map);
+			}
+
+			// Printing route
+			addScript(refID[ 'Route path' ]);
+
+			// Setting up localStorage
+			localStorage.setItem( routeName, routePath );
+
+		});
+
+	}
 
 
 });
