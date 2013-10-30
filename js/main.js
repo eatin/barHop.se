@@ -109,6 +109,15 @@ $(function(){
 		}
 	});
 
+		//ABOUT BOX
+	$('.info').click(function() {
+		$('.inforuta').fadeIn(500, 'easeInExpo')
+	});
+
+	$('.close').click(function() {
+		$('.inforuta').fadeOut(500, 'easeOutExpo')
+	});
+
 		// Push route to firebase
 	var routesRef = new Firebase ('https://barhop.firebaseio.com/myRoutes'),
 		uniqID;

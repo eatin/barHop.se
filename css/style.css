@@ -48,6 +48,44 @@ body {
 	display: none;
 }
 
+.inforuta {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 520px;
+	padding: 100px 40px 40px 50px;
+	color: #000000;
+	
+	background: rgba(61,223,152,.9);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	z-index: 800;
+}
+
+.inforuta p {
+	float: left;
+	position: absolute;
+	margin: 0px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #ffffff;
+}
+
+.inforuta img {
+	float: right;
+	position: absolute;
+	top: 500px; 
+	left: 160px;
+	right: 50px;
+	bottom: 30px;
+}
+
+.bottom img {
+	crusor: pointer;
+}
 
 #menu {
 	position: fixed;
@@ -78,6 +116,22 @@ body {
 	display: inline-table;
 	margin-right: 15px;
 	margin-top: 7px;
+}
+
+#menu .bottom .info{
+	float: left;
+	position: absolute;
+	bottom: 30px;
+	left: 50px;
+	
+}
+
+#menu .bottom .gps {
+	float: right; 
+	margin-right: 110px;
+	position: absolute;
+	bottom: 30px;
+	right: 50px;
 }
 
 #menu div:first-child h1{
