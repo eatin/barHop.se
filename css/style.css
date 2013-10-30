@@ -60,8 +60,8 @@ body {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	width: 520px;
-	padding: 100px 40px 40px 50px;
+	width: 420px;
+	padding: 50px 40px 40px 50px;
 	color: #000000;
 	
 	background: rgba(61,223,152,.9);
@@ -72,11 +72,10 @@ body {
 }
 
 .inforuta p {
-	float: left;
-	position: absolute;
-	margin: 0px;
 	font-family: 'Source Sans Pro', sans-serif;
 	color: #ffffff;
+	font-size: 20px;
+	font-weight: 300;
 }
 
 .inforuta img {
@@ -88,9 +87,6 @@ body {
 	bottom: 30px;
 }
 
-.bottom img {
-	crusor: pointer;
-}
 
 #menu {
 	position: fixed;
@@ -123,6 +119,9 @@ body {
 	margin-top: 7px;
 }
 
+.bottom img {
+	crusor: pointer;
+}
 #menu .bottom .info{
 	float: left;
 	position: absolute;
@@ -386,7 +385,18 @@ span a.leaflet-popup-close-button {
         }
 
 
+@media all and (max-width: 640px) {
 
+	img[alt="icon"] {
+		width: 12px !important;
+		height: 12px !important;
+	}
+
+	#menu h1 {
+		font-size: 24px
+	}	
+
+}
 
 
 
