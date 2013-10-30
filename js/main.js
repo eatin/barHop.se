@@ -40,13 +40,21 @@ $(function(){
 			marginLeft: '0px'
 		}, 400, 'easeInExpo');
 		menuShowing = false;
+		visas = false;
+		$('.savedRoutes li span').hide();
 	});
 
 	// MENUE
 	var menuShowing = false;
 	$('#hamburger').click(function(){
-		var winW = $(window).width(),
-			slideL = winW - 1018;
+		var winW = $(window).width();
+			
+		if (winW < 640) {
+			var slideL = winW - 66;
+		} else {
+			var slideL = 420;
+		}
+
 		if (!menuShowing) {
 			menuShowing = true;
 			$('#map').animate({
@@ -57,6 +65,8 @@ $(function(){
 				marginLeft: '0px'
 			}, 400, 'easeInExpo');
 			menuShowing = false;
+			visas = false;
+			$('.savedRoutes li span').hide();
 		}
 	});
 
@@ -76,6 +86,8 @@ $(function(){
 		$('#map').animate({marginLeft: '0px'}, 400, 'easeInExpo');
 		$('#saveBtn').show();
 		menuShowing = false;
+		visas = false;
+		$('.savedRoutes li span').hide();
 	});
 
 		// Show modal on #saveBtn 
@@ -160,7 +172,7 @@ $(function(){
 			stored = stored.split('SPLITTER'),
 			id = stored[1];
 
-		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen"><a href="#" class="use">' + key + '</a><a href="' + id + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /></span></li>');
+		$('ul.savedRoutes').append('<li id="' + id + '" class="userGen"><a href="#" class="use">' + key + '</a><a href="' + id + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /><a href="#" class="leaflet-popup-close-button stang">x</a></span></li>');
 	}
 
 		// Allow user created routes
@@ -198,6 +210,10 @@ $(function(){
 				var go2 = L.marker([goHereLat, goHereLng], {icon: go2barLocation}).addTo(map);
 			}
 		}, 500)
+
+		$('.savedRoutes li span').hide(function(){
+			visas = false;
+		});
 
 		$('#map').animate({
 			marginLeft: '0px'
@@ -243,24 +259,37 @@ $(function(){
 			localStorage.setItem( routeName, routePath + 'SPLITTER' + ID );
 
 			// Instant store
-			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '<a href="' + ID + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /></span></li>');
+			$('.savedRoutes').append('<li id="' + ID + '">' + routeName + '<a href="' + ID + '"><img src="img/sharethis.png"></a><span><input type="text" class="shareLink" /><a href="#" class="leaflet-popup-close-button stang">x</a></span></li>');
 
 		});
 
 	}
 
 		// Share link
+	var visas;
 	$('.savedRoutes li a').click(function(e){
 		e.preventDefault();
+
+		$('.savedRoutes li span').hide();
 		
 		var el = $(this).parent('li'),
 			link = el.attr('id'),
 			url = window.location + '#';
 
 		el.find('input.shareLink').val( url + link );
-		el.find('span').show().find('input.shareLink').focus().select();
-	})
+		if (!visas) {
+			visas = true;
+			el.find('span').show().find('input.shareLink').focus().select();
+		} else {
+			visas = false;
+			el.find('span').hide();
+		}
+	});
 
+	$('span a.leaflet-popup-close-button').click(function(){
+		visas = false;
+		$('.savedRoutes li span').hide();
+	});
 
 });
 
