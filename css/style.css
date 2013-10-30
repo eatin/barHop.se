@@ -27,7 +27,7 @@ body {
 	background: #222;
 }
 
-.you, .bar2go2{
+.you, .bar2go2, .showUser {
 	width: 7px;
 	height: 7px;
 	border-radius: 7px;
@@ -39,6 +39,11 @@ body {
 	margin-left: -4px;
 	margin-top: -4px;
 	cursor: default !important;
+}
+.showUser {
+	background: #f9522b;
+	border: 0;
+	z-index: 1070 !important;
 }
 .bar2go2 {
 	background: #e9bc36;

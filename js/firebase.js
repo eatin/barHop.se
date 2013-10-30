@@ -1,64 +1,63 @@
-//Firebase references
-var myDataRef = new Firebase('https://barhop.firebase.com/myRoutes'); 
+$(function(){
+	var showUserLocation = L.divIcon({className: 'showUser',iconSize: [7, 7]});
+    var showUserPos = L.marker([0, 0], {icon: showUserLocation});
+    var userPosRef = new Firebase ('https://barhop.firebaseio.com/users');
+    var userPosID;
 
-var myRoutesRef = barhopRef.child('barhop/myRoutes');
-var routeNameRef = myRoutesRef.child('myRoutes/routeName');
-var createdRouteRef = routeNameRef.child('routeName/route');
+	$('.showPos2others a').click(function(e){
+		e.preventDefault();
 
-// Generate a reference to a new location with push
-// var routeNameRef = myRoutesRef.push();
+		navigator.geolocation.watchPosition(function(data) {
+			console.log("i am moving")
+		    var lat = data['coords']['latitude'];
+		    var lng = data['coords']['longitude'];
+		    var newLatLng = new L.LatLng(lat, lng);
+		    var	newUserRef = new Firebase('https://barhop.firebaseio.com/users/' + userPosID);
+		    
+		    newUserRef.set({ 'LatLng': [lat,lng], 'time': Firebase.ServerValue.TIMESTAMP });
 
-//Local storage
-var routeName = localStorage.getItem('routeName');
-	if (routeName) {
-		//do somethong
-	} else {
-		//do something
-		localStorage.setItem("routeName", routeName);
-		myRoutesRef = myDataRef.push({name: routeName});
-		localStorage.setItem("routeName", myRoutes.routeName());		
-	}
+		    // showUserPos.setLatLng(newLatLng).addTo(map);
+		});
+	});
 
-//Generate name of route
-$('#routeName').keypress(function (e) {
-	if(e.keycode == 13) {
-		var routename = $('#routename').val();
-	} 
-	else {
-		var myDataRef = new Firebase ('https://barhop.firebase.com/myRoutes');
-		myDataRef.push({ routeName: routeName });
+	var userMarkers = {};
 
-		localStorage.setItem('routeName', routename);
-	}
-	var routeName = localStorage.getItem('routeName');
+	userPosRef.on("value", function(snapshot) {
+	  var users = snapshot.val();
+	  for (id in users) {
+	    var user = users[id];
+	    var userMarker = userMarkers[id];
+	    var position = [parseFloat(user.LatLng[0]), parseFloat(user.LatLng[1])];
+	    var lastUpdatedAt = parseFloat(user.time);
+	    if ((new Date().getTime() - lastUpdatedAt) > 10000) {
+	      if (userMarker) {
+	        map.removeLayer(userMarker);
+	        delete userMarkers[id];
+	      }
+	    } else {
+	        if (!userMarker) {
+	        userMarker = L.marker(position, { icon: showUserLocation });
+	        userMarker.addTo(map);
+	        userMarkers[id] = userMarker;
+	      } else {
+	        userMarker.setLatLng(new L.LatLng(position[0], position[1]));
+	      }
+	    }
+	  }
+	});
+
+
+	var auth = new FirebaseSimpleLogin(userPosRef, function(error, user) {
+  		if (error) {
+  		  // an error occurred while attempting login
+  		} else if (user) {
+  		  userPosID = user.id;
+  		  // user authenticated with Firebase
+  		  console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
+  		} else {
+  		  auth.login('anonymous');
+  		  // user is logged out
+  		}
+	});
+
 });
-
-// Set some data to the generated location
-$('#createRoute').click(function(){
-	new myRoutesRef.set('http://routes.cloudmade.com/0932569191ae4fe7b76faa846f0b860c/api/0.3/' + startP + ',[' + transitP + '],' + endP + '/foot.js?callback=getRoute');	
-});
-
-//Reading List data
-//var myRoutesRef = new Firebase('https://barhop.firebaseIO.com/myRoutes');
-//myRoutesRef.on('child_added', function(snapshot) {
-  //var msgData = snapshot.val();
-  //console.log("Route Added")
-//});
-
-//Callback
-dataRef.set(function(error) {
-  if (error) {
-    alert('Route could not be saved.' + error);
-  } else {
-    alert('Route saved successfully.');
-  }
-});
-
-
-
-
-
-
-
-
-
